@@ -17,6 +17,10 @@ public class CheckDragNDropAnswer : MonoBehaviour
 
     private Refresh DragNDropObject;
 
+	public GameObject Numbers;
+	public GameObject Numerator;
+	public GameObject Denominator; 
+
     public void ClickToCheckAnswer()
     {
 
@@ -32,7 +36,13 @@ public class CheckDragNDropAnswer : MonoBehaviour
 
         if (correctAnswer == enteredAnswer)
         {
-            rightAnswerAudio.Play();
+
+			Transform child = Numerator.gameObject.transform.GetChild(0);
+			child.SetParent(Numbers.transform);
+
+			Transform child2 = Denominator.gameObject.transform.GetChild(0);
+			child2.SetParent(Numbers.transform);
+			rightAnswerAudio.Play();
 
             Debug.Log("Answer is Correct!");
 
